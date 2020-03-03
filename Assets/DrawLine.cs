@@ -13,6 +13,7 @@ public class DrawLine : MonoBehaviour
 
     public List<Vector2> fingerPositions;
 
+    public Transform resultHolder;
  
     
     
@@ -21,6 +22,12 @@ public class DrawLine : MonoBehaviour
     {
         if(Input.GetMouseButtonDown(0))
         {
+            for (int i = 0; i < resultHolder.childCount; i++)
+            {
+                Destroy(resultHolder.GetChild(i).gameObject);
+            }
+
+
             if(currentLine!= null)
                 Destroy(currentLine);
             CreateLine();
@@ -35,7 +42,8 @@ public class DrawLine : MonoBehaviour
         }
         if(Input.GetMouseButtonUp(0))
         {
-
+            resultHolder.GetComponent<FormLine>().linePoints = fingerPositions;
+            resultHolder.GetComponent<FormLine>().FormBallLine();
         }
     }
 
