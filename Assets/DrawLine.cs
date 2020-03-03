@@ -14,19 +14,16 @@ public class DrawLine : MonoBehaviour
     public List<Vector2> fingerPositions;
 
     public Transform resultHolder;
- 
-    
+
+    public float pointStep = 0.1f;
     
    
     void Update()
     {
         if(Input.GetMouseButtonDown(0))
         {
-            for (int i = 0; i < resultHolder.childCount; i++)
-            {
-                Destroy(resultHolder.GetChild(i).gameObject);
-            }
 
+            resultHolder.GetComponent<FormLine>().ResetBalls();
 
             if(currentLine!= null)
                 Destroy(currentLine);
@@ -35,7 +32,7 @@ public class DrawLine : MonoBehaviour
         else if(Input.GetMouseButton(0))
         {
             Vector2 tempFingerPosition = drawCamera.ScreenToWorldPoint(Input.mousePosition);
-            if(Vector2.Distance(tempFingerPosition,fingerPositions[fingerPositions.Count-1])>.1f)
+            if(Vector2.Distance(tempFingerPosition,fingerPositions[fingerPositions.Count-1])>pointStep)
             {
                 UpdateLine(tempFingerPosition);
             }

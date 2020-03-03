@@ -11,11 +11,26 @@ public class FormLine : MonoBehaviour
 
     public void FormBallLine()
     {
-        for (int i = 0; i < linePoints.Count; i++)
+        if(linePoints.Count>1)
         {
-            Instantiate(ballPref, new Vector3(linePoints[i].x,linePoints[i].y,0) , Quaternion.identity, transform);
+            for (int i = 0; i < linePoints.Count; i++)
+            {
+                Instantiate(ballPref, new Vector3(linePoints[i].x,linePoints[i].y,0) , Quaternion.identity, transform);
+            }
+
+            transform.GetComponent<Rigidbody>().isKinematic = false;
         }
     }
 
     
+    public void ResetBalls()
+    {
+        for (int i = 0; i < transform.childCount; i++)
+        {
+            Destroy(transform.GetChild(i).gameObject);
+        }
+
+        transform.GetComponent<Rigidbody>().isKinematic = true;
+        transform.position = Vector3.zero;
+    }
 }
