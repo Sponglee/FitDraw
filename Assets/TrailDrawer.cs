@@ -25,6 +25,13 @@ public class TrailDrawer : MonoBehaviour
         {
             mouseReference.position = CalculatePositionFromMouseToRectTransform(canvasReference, Camera.main);
             mouseReference.GetComponent<TrailRenderer>().enabled = true;
+
+            for (int i = 0; i < resultHolder.childCount; i++)
+            {
+                Destroy(resultHolder.GetChild(i).gameObject);
+            }
+
+            
         }
         else if ((Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Moved) || Input.GetMouseButton(0))
         {
@@ -34,11 +41,25 @@ public class TrailDrawer : MonoBehaviour
         }
         else if ((Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Ended) || Input.GetMouseButtonUp(0))
         {
-            mouseReference.GetComponent<TrailRenderer>().BakeMesh(outMesh, drawingCam);
 
-            resultHolder.GetComponent<MeshFilter>().sharedMesh = outMesh;
+
+            Vector3[] points = new Vector3[mouseReference.GetComponent<TrailRenderer>().positionCount];
+            int count = mouseReference.GetComponent<TrailRenderer>().GetPositions(points);
+
+            Vector3[] recalculatedPoints = new Vector3[points.Length];
+
+            for (int i = 0; i < points.Length; i++)
+            {
+                recalculatedPoints[i] = (points[i] - transform.position);
+
+            }
+
+
+            resultHolder.GetComponent<LineDrawer>().Points = recalculatedPoints;
+
             mouseReference.GetComponent<TrailRenderer>().Clear();
             mouseReference.GetComponent<TrailRenderer>().enabled = false;
+
 
         }
     }
