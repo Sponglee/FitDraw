@@ -15,7 +15,7 @@ public class FormLine : MonoBehaviour
         {
             for (int i = 0; i < linePoints.Count; i++)
             {
-                Instantiate(ballPref, new Vector3(linePoints[i].x,linePoints[i].y,0) , Quaternion.identity, transform);
+                Instantiate(ballPref, new Vector3(0,linePoints[i].y, linePoints[i].x) , Quaternion.identity, transform);
             }
 
             transform.GetComponent<Rigidbody>().isKinematic = false;
