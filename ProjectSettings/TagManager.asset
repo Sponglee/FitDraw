@@ -9,6 +9,7 @@ TagManager:
   - Danger
   - Press
   - Preventer
+  - Shield
   layers:
   - Default
   - TransparentFX

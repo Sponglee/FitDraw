@@ -16,7 +16,7 @@ public class EnemyMover : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         if(!WasHit)
             transform.Translate(transform.forward  * speed);
@@ -29,7 +29,12 @@ public class EnemyMover : MonoBehaviour
         {
             WasHit = true;
             rb.constraints = RigidbodyConstraints.None;
-            rb.AddForce(Vector3.right * Random.Range(-2f,1f)*15f+ Vector3.up * 700f);
+            rb.AddForce(Vector3.up * 270f);
+            rb.AddTorque(Vector3.right*700f);
+        }
+        else if(collision.transform.CompareTag("Shield"))
+        {
+            rb.AddForce(Vector3.forward * 270f);
         }
         else if(collision.transform.CompareTag("Water"))
         {

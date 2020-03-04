@@ -125,7 +125,7 @@ GameObject:
   - component: {fileID: 1493158724755076867}
   - component: {fileID: 897671689425758627}
   m_Layer: 0
-  m_Name: Capsule
+  m_Name: Capsule 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -139,8 +139,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1493158724755076878}
   m_LocalRotation: {x: -0, y: 0.99144495, z: 0.13052596, w: 0}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 0, y: -0.499, z: -0.134}
+  m_LocalScale: {x: 1, y: 0.484, z: 1}
   m_Children:
   - {fileID: 1493158724193261056}
   m_Father: {fileID: 0}

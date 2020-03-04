@@ -4,32 +4,31 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    public InputManager inputManager;
-    public float rotationSpeed = 1f;
-    public Vector2 inputRange = new Vector2(1,1);
+    public Transform shield;
+    public Transform weapon;
 
-    private void Update()
+   
+
+    // Update is called once per frame
+    void Update()
     {
-        if(Input.GetMouseButton(0))
+        if(Input.GetMouseButtonDown(0))
         {
-            MovePlayer();
+            weapon.transform.eulerAngles = Vector3.zero;
+            shield.transform.eulerAngles = new Vector3(0,-90f,0);
+            shield.GetComponent<BoxCollider>().enabled = false;
+        }
+        else if(Input.GetMouseButtonUp(0))
+        {
+            weapon.transform.eulerAngles = new Vector3(25f,60f,0);
+            shield.transform.eulerAngles = Vector3.zero;
+            shield.GetComponent<BoxCollider>().enabled = true;
         }
     }
-    private void MovePlayer()
+
+    public void RotateEquipment(Transform target)
     {
-        //Move a player with rb velocity forward + joystick offsets
-    
-
-        //Offset player within a screen
-        //transform.localPosition = Vector3.Lerp(transform.localPosition, new Vector3(transform.localPosition.x, transform.localPosition.y, transform.localPosition.z), Time.deltaTime);
-
-
-
-        //Rotate player towards movement
-        Vector3 lookDirection = new Vector3(inputManager.input.x*inputRange.x, inputManager.input.y*inputRange.y / 2f, 1f);
-        Quaternion lookRotation = Quaternion.LookRotation(lookDirection, Vector3.up);
-        float step = rotationSpeed * Time.deltaTime;
-        transform.rotation = Quaternion.RotateTowards(lookRotation, transform.rotation, step);
 
     }
+
 }
