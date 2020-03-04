@@ -10,6 +10,7 @@ TagManager:
   - Press
   - Preventer
   - Shield
+  - Enemy
   layers:
   - Default
   - TransparentFX
@@ -20,10 +21,10 @@ TagManager:
   - 
   - 
   - 
-  - 
+  - Ground
   - DrawLayer
-  - 
-  - 
+  - Weapon
+  - Shield
   - 
   - 
   - 
