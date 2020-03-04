@@ -33,7 +33,7 @@ public class PlayerController : MonoBehaviour
         else if(Input.GetMouseButtonUp(0))
         {
             weapon.transform.eulerAngles = new Vector3(25f,60f,0);
-            shield.transform.eulerAngles = Vector3.zero;
+            shield.transform.eulerAngles = new Vector3(-5f,0f,0f);
             shield.GetComponent<BoxCollider>().enabled = true;
            
             rb.velocity = new Vector3(rb.velocity.x, rb.velocity.y, 0f);

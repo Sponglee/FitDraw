@@ -7,6 +7,8 @@ public class EnemyMover : MonoBehaviour
     [SerializeField] private float speed = 0.1f;
     private Rigidbody rb;
 
+    [SerializeField] private bool Movable = false;
+
     private bool wasHit = false;
     public bool WasHit
     {
@@ -37,8 +39,8 @@ public class EnemyMover : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        //if(!WasHit)
-        //    transform.Translate(transform.forward  * speed);
+        if (Movable && !WasHit)
+            transform.Translate(Vector3.forward * speed);
     }
 
 
