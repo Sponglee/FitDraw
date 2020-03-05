@@ -78,13 +78,13 @@ public class EnemyMover : MonoBehaviour
         {
             rb.AddTorque(-Vector3.right * 700f);
             rb.AddForce(Vector3.right* 270f);
-            Debug.Log("LEFT");
+            //Debug.Log("LEFT");
         }
         else
         {
             rb.AddTorque(Vector3.right * 700f);
             rb.AddForce(-Vector3.right * 270f);
-            Debug.Log("RIGHT");
+            //Debug.Log("RIGHT");
         }
         transform.GetComponent<Renderer>().material.color = Color.grey;
     }
