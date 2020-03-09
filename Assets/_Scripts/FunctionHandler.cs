@@ -24,6 +24,7 @@ public class FunctionHandler : Singleton<FunctionHandler>
     public void LevelComplete()
     {
         menuText.text = "YOU WIN";
+        uiCanvas.gameObject.SetActive(false);
         winCanvas.gameObject.SetActive(true);
         Time.timeScale =0f;
     }

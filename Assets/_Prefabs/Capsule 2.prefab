@@ -283,6 +283,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 91e69495ca509114497ca2fb4f3fb5df, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  killScore: 5
   enemyRb: {fileID: 0}
   speed: -0.05
   Movable: 0

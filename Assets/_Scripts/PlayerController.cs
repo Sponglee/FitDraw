@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
+    public static Transform playerTransform;
+
     public Transform shield;
     public Transform weapon;
 
@@ -14,6 +16,8 @@ public class PlayerController : MonoBehaviour
     private void Start()
     {
         rb = GetComponent<Rigidbody>();
+
+        playerTransform = transform;
     }
 
     // Update is called once per frame
@@ -27,6 +31,7 @@ public class PlayerController : MonoBehaviour
         else if(Input.GetMouseButton(0))
         {
             rb.velocity = new Vector3(rb.velocity.x, rb.velocity.y, 1f / 10f * speed);
+            
         }
         else if(Input.GetMouseButtonUp(0))
         {

@@ -4,9 +4,10 @@ using UnityEngine;
 
 public class EnemyController : MonoBehaviour, IInteractable
 {
-  
-    [SerializeField] private Rigidbody enemyRb;
 
+    [SerializeField] private float killScore = 10f;
+
+    [SerializeField] private Rigidbody enemyRb;
     [SerializeField] private float speed = 0.1f;
     [SerializeField] private bool Movable = false;
     [SerializeField] private bool wasHit = false;
@@ -20,6 +21,7 @@ public class EnemyController : MonoBehaviour, IInteractable
         set
         {
             wasHit = value;
+            GameManager.OnEnemyKill.Invoke(killScore);
             Invoke(nameof(ResetHit), 1f);
         }
     }
@@ -83,5 +85,6 @@ public class EnemyController : MonoBehaviour, IInteractable
     public void TriggerInteract(Transform triggerTransform)
     {
         GotHit(triggerTransform);
+       
     }
 }
