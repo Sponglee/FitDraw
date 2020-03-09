@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ProjectileBehaviour : MonoBehaviour
+public class ProjectileMover : MonoBehaviour
 {
 
     [SerializeField] private float speed = 0.1f;
@@ -12,11 +12,5 @@ public class ProjectileBehaviour : MonoBehaviour
         transform.Translate(Vector3.forward * speed);
     }
 
-    private void OnCollisionEnter(Collision collision)
-    {
-        if(collision.transform.CompareTag("Shield"))
-        {
-            Destroy(gameObject);
-        }
-    }
+    
 }

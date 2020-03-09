@@ -9,7 +9,7 @@ public class PlayerController : MonoBehaviour
 
     public Rigidbody rb;
 
-    [SerializeField] private float speed;
+    [SerializeField] private float speed=130f;
 
     private void Start()
     {
@@ -21,9 +21,7 @@ public class PlayerController : MonoBehaviour
     {
         if(Input.GetMouseButtonDown(0))
         {
-            weapon.transform.eulerAngles = Vector3.zero;
-            shield.transform.eulerAngles = new Vector3(0,-90f,0);
-            shield.GetComponent<BoxCollider>().enabled = false;
+            WeaponActive();
            
         }
         else if(Input.GetMouseButton(0))
@@ -32,10 +30,7 @@ public class PlayerController : MonoBehaviour
         }
         else if(Input.GetMouseButtonUp(0))
         {
-            weapon.transform.eulerAngles = new Vector3(25f,60f,0);
-            shield.transform.eulerAngles = new Vector3(-5f,0f,0f);
-            shield.GetComponent<BoxCollider>().enabled = true;
-           
+            ShieldActive();
             rb.velocity = new Vector3(rb.velocity.x, rb.velocity.y, 0f);
         }
     }
@@ -45,4 +40,17 @@ public class PlayerController : MonoBehaviour
 
     }
 
+    private void ShieldActive()
+    {
+        weapon.transform.eulerAngles = new Vector3(25f, 60f, 0);
+        shield.transform.eulerAngles = new Vector3(-5f, 0f, 0f);
+        shield.GetComponent<BoxCollider>().enabled = true;
+    }
+
+    private void WeaponActive()
+    {
+        weapon.transform.eulerAngles = Vector3.zero;
+        shield.transform.eulerAngles = new Vector3(0, -90f, 0);
+        shield.GetComponent<BoxCollider>().enabled = false;
+    }
 }

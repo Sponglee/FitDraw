@@ -12,10 +12,10 @@ public class SwingController : MonoBehaviour
     {
         if(Input.GetMouseButton(0))
         {
-            MovePlayer();
+            MoveTransform();
         }
     }
-    private void MovePlayer()
+    private void MoveTransform()
     {
         //Move a player with rb velocity forward + joystick offsets
     
