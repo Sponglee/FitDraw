@@ -12,10 +12,10 @@ public class EnemyWeapon : WeaponBehaviour
 
     public override void CollisionInteract(Transform collisionTransform)
     {
-        Debug.Log("<_");
-            enemyController.PushBack();
-        if(collisionTransform.CompareTag(transform.tag))
+        Debug.Log(transform.tag +" <_: " +  collisionTransform.gameObject.tag);
+        if(!collisionTransform.CompareTag(transform.tag))
         {
+            enemyController.PushBack();
         }
     }
 
