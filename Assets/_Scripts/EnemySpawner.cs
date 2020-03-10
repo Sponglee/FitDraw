@@ -5,6 +5,8 @@ using UnityEngine;
 public class EnemySpawner : MonoBehaviour
 {
 
+  
+
     public GameObject[] enemyPrefs;
 
     // Start is called before the first frame update
@@ -20,7 +22,7 @@ public class EnemySpawner : MonoBehaviour
     {
         for (int i = 0; i < Random.Range(5,20); i++)
         {
-            Instantiate(enemyPrefs[Random.Range(0,enemyPrefs.Length)], transform.position + Vector3.right*(Random.Range(-2f,1f)),Quaternion.AngleAxis(180f,Vector3.up),transform);
+            Instantiate(enemyPrefs[Random.Range(0,enemyPrefs.Length)], transform.position + Vector3.right*(Random.Range(0f,1f)),Quaternion.AngleAxis(180f,Vector3.up),transform);
         }
     }
 

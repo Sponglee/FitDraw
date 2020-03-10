@@ -81,6 +81,7 @@ public class GameManager : Singleton<GameManager>
     private void EnemyKilled(float killScore)
     {
         Score += killScore;
+            
     }
 
     private void LevelCompleteHandler()

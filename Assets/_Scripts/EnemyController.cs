@@ -1,9 +1,13 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class EnemyController : MonoBehaviour, IInteractable
 {
+    public class OnPushBackEvent : UnityEvent { };
+    public OnPushBackEvent OnPushBack = new OnPushBackEvent();
+
 
     [SerializeField] private float killScore = 10f;
 
@@ -74,16 +78,19 @@ public class EnemyController : MonoBehaviour, IInteractable
 
     public void PushBack()
     {
+        OnPushBack.Invoke();
         enemyRb.AddForce(Vector3.forward * 270f);
     }
 
     public void CollisionInteract(Transform collisionTransform)
     {
+        //Debug.Log("COLL");
         PushBack();
     }
 
     public void TriggerInteract(Transform triggerTransform)
     {
+        Debug.Log("TRI");
         GotHit(triggerTransform);
        
     }

@@ -2,36 +2,28 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class WeaponBehaviour: MonoBehaviour
+public abstract class WeaponBehaviour: MonoBehaviour, IInteractable
 {
-    public void CollisionInteract(Transform collisionTransform)
-    {
-
-        if (collisionTransform.CompareTag("Enemy") && collisionTransform.GetComponent<EnemyController>().WasHit)
-        {
-            
-        }
-        else if (collisionTransform.CompareTag("Shield"))
-        {
-            //Interact with enemy shield
-        }
-
-
-    }
-
-    public void TriggerInteract(Transform triggerTransform)
-    {
-        triggerTransform.GetComponent<EnemyController>().GotHit(transform);
-      
-    }
-
+   
     private void OnTriggerEnter(Collider other)
     {
-
         if (other.transform.GetComponent<IInteractable>() != null)
         {
             other.transform.GetComponent<IInteractable>().TriggerInteract(transform);
         }
     }
+
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        //Debug.Log("CLING: " + collision.gameObject.name);
+        if (collision.transform.GetComponent<IInteractable>() != null)
+        {
+            collision.transform.GetComponent<IInteractable>().CollisionInteract(transform);
+        }
+    }
+
+    public virtual void CollisionInteract(Transform collisionTransform){}
+    public virtual void TriggerInteract(Transform triggerTransform){}
 
 }

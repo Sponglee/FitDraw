@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerController : MonoBehaviour
+public class PlayerController : MonoBehaviour, IInteractable
 {
     public static Transform playerTransform;
 
@@ -49,13 +49,30 @@ public class PlayerController : MonoBehaviour
     {
         weapon.transform.eulerAngles = new Vector3(25f, 60f, 0);
         shield.transform.eulerAngles = new Vector3(-5f, 0f, 0f);
-        shield.GetComponent<BoxCollider>().enabled = true;
+        shield.GetChild(0).GetComponent<BoxCollider>().enabled = true;
+        weapon.GetChild(0).GetComponent<BoxCollider>().enabled = false;
+        transform.GetComponent<CapsuleCollider>().enabled = false;
     }
 
     private void WeaponActive()
     {
         weapon.transform.eulerAngles = Vector3.zero;
         shield.transform.eulerAngles = new Vector3(0, -90f, 0);
-        shield.GetComponent<BoxCollider>().enabled = false;
+        shield.GetChild(0).GetComponent<BoxCollider>().enabled = false;
+        weapon.GetChild(0).GetComponent<BoxCollider>().enabled = true;
+        transform.GetComponent<CapsuleCollider>().enabled = true;
+    }
+
+   
+
+    public void TriggerInteract(Transform triggerTransform)
+    {
+       
+    }
+
+    public void CollisionInteract(Transform collisionTransform)
+    {
+        Debug.Log("HIT");
+        //FunctionHandler.Instance.GameOver();
     }
 }

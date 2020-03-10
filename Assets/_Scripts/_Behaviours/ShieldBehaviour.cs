@@ -2,17 +2,17 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ShieldBehaviour : MonoBehaviour, IInteractable
+public class ShieldBehaviour : MonoBehaviour
 {
-    public void CollisionInteract(Transform collisionTransform)
+    private void OnCollisionEnter(Collision collision)
     {
-       
+
+        if (collision.transform.GetComponent<IInteractable>() != null)
+        {
+            Debug.Log("SHIELD: " + collision.gameObject.name);
+            collision.transform.GetComponent<IInteractable>().CollisionInteract(transform);
+        }
     }
 
-    public void TriggerInteract(Transform triggerTransform)
-    {
-        
-    }
 
-   
 }
