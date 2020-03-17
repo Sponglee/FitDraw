@@ -11,10 +11,6 @@ public class UITextUpdater : MonoBehaviour
         GameManager.OnScoreChange.AddListener(UpdateText);
     }
 
-    private void OnEnable()
-    {
-       UpdateText(GameManager.Instance.Score.ToString());
-    }
 
     // Update is called once per frame
     void UpdateText(string text)
