@@ -29,10 +29,10 @@ public class SwingController : MonoBehaviour
         //Offset player within a screen
         //transform.localPosition = Vector3.Lerp(transform.localPosition, new Vector3(transform.localPosition.x, transform.localPosition.y, transform.localPosition.z), Time.deltaTime);
 
-
+        
 
         //Rotate player towards movement
-        Vector3 lookDirection =  new Vector3(transform.forward.x +(inputManager.input.x)*inputRange.x, transform.forward.y + (inputManager.input.y*inputRange.y) / 2f, 1f);
+        Vector3 lookDirection =  new Vector3(0f/*transform.forward.x +(-inputManager.input.y)*inputRange.y*/, transform.forward.x + (-inputManager.input.x*inputRange.x) *5f, 1f);
         Quaternion lookRotation = Quaternion.LookRotation(lookDirection, Vector3.up);
         float step = rotationSpeed * Time.deltaTime;
         transform.rotation = Quaternion.RotateTowards(lookRotation, transform.rotation, step);
