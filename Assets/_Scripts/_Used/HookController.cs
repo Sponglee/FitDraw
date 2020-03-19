@@ -46,11 +46,11 @@ public class HookController : MonoBehaviour
                     hookGizmo.position = hitInfo.point;
                     HasCollided = true;
                 }
-
+                
             }
             else
-                hookGizmo.localPosition = Vector3.zero;
-           
+                hookGizmo.position = hookPivot.position;
+
         }
         else if(Input.GetMouseButtonUp(0))
         {
